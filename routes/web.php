@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('home','HomeController@index');
+Route::get('/', function () {
+    return view('welcome');
+});
+// Route::get('home',function () {
+//     return view('todo.index');
+// });
+Route::get('home','App\Http\Controllers\HomeController@index');
+Route::get('home/{todo}','App\Http\Controllers\HomeController@show');
 
-// Route::get('home', [ 'as' => 'pagae.welcome', 'uses' => 'HomeController@index' ]);
+Route::get('createTodo','App\Http\Controllers\HomeController@create');
 
-// Route::get('about', [ 'as' => 'page.about', 'uses' => 'PageController@about' ]);
+Route::get('create-new','App\Http\Controllers\HomeController@create_new');
+
+Route::get('home/{todo}/edit','App\Http\Controllers\HomeController@edit');
+
+Route::get('home/{todo}/update_todo','App\Http\Controllers\HomeController@update');
+
+Route::get('home/{todo}/delete','App\Http\Controllers\HomeController@delete');
+
+Route::get('home/{todo}/complete','App\Http\Controllers\HomeController@complete');
+
+
+
+
+
+
+
+
+
